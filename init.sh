@@ -1,10 +1,13 @@
 #!/bin/sh
 
 cd
-for p in .dotfiles/.zsh.d .dotfiles/.zsh.d/package/zsh.d
+github_user_name=MaxMEllon
+local_path=(.dotfiles/.zsh.d .dotfiles/.zsh.d/package/zsh.d)
+repo=(.zsh.d zsh.d)
+count=(0 1)
+for k in count
 do
-  repo `echo $p | sed -e "s/.dotfiles\///g"`
-  git clone https://github.com/${GITHU_USER_NAME}/${repo}.git ${p}
+  git clone https://github.com/${github_user_name}/${repo[$k]}.git $local_path[$k]
 done
 ln -s .dotfiles/.zsh.d/.zshrc
 if [ ! -e .zshenv ]; then
