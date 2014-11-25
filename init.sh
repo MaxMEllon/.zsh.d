@@ -13,4 +13,4 @@ ln -s .dotfiles/.zsh.d/.zshrc
 if [ ! -e .zshenv ]; then
   touch .zshenv
 fi
-echo "source ~/.dotfiles/.zsh.d/package/zsh.d/zshenv"
+echo "source ~/.dotfiles/.zsh.d/package/zsh.d/zshenv" >> ~/.zshenv
