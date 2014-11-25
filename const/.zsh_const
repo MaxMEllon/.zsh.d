@@ -1,0 +1,41 @@
+
+IP=`head -1 ~/.dotfiles/.zsh.d/ip/ip_data.dat | grep 1`
+
+gn=${fg[green]}
+yw=${fg[yellow]}
+be=${fg[blue]}
+cn=${fg[cyan]}
+ma=${fg[magenta]}
+rd=${fg[red]}
+gy=${fg[gray]}
+rc=$reset_color
+
+colors=(
+    ## 気に入らない色はコメントアウト
+    # $'%{\e[0;30m%}' # black
+    # $'%{\e[0;31m%}' # red
+    $'%{\e[0;32m%}' # green
+    $'%{\e[0;33m%}' # brown
+    $'%{\e[0;34m%}' # blue
+    $'%{\e[0;35m%}' # purple
+    $'%{\e[0;36m%}' # cyan
+    # $'%{\e[0;37m%}' # gray
+
+    ## light colors
+    # $'%{\e[1;30m%}' # black
+    # $'%{\e[1;31m%}' # red
+    $'%{\e[1;32m%}' # green
+    $'%{\e[1;33m%}' # brown
+    $'%{\e[1;34m%}' # blue
+    $'%{\e[1;35m%}' # purple
+    $'%{\e[1;36m%}' # cyan
+    # $'%{\e[1;37m%}' # gray
+)
+c_user=$colors[$((`echo "$USER" | sum | cut -f1 -d' '`%${#colors}))+1]$USER
+c_host=$colors[$((`echo "$HOST" | sum | cut -f1 -d' '`%${#colors}))+1]
+c_ip=$colors[$((`echo "$IP" | sum | cut -f1 -d' '`%${#colors}))+1]($IP)
+role='%(!.#.$)'
+
+# Ctrl-W での単語単位を区切るワードの登録
+WORDCHARS='*?_-.[~=&;!#$%^({<>})]'
+

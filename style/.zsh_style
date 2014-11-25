@@ -1,0 +1,33 @@
+#補完機能を使用する
+autoload -U compinit && compinit
+zstyle ':completion::complete:*' use-cache true
+zstyle ':completion:*:default' menu select=1
+
+#大文字、小文字を区別せず補完する
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+
+#補完でカラーを使用する
+zstyle ':completion:*' list-colors "${LS_COLORS}"
+
+#kill の候補にも色付き表示
+zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([%0-9]#)*=0=01;31'
+
+#zsh内蔵エディタを使う
+autoload -U zcalc
+autoload zed
+
+# プロンプトが表示されるたびにプロンプト文字列を評価、置換する
+setopt prompt_subst
+
+#入力途中の履歴補完を有効化する
+autoload history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+
+#入力途中の履歴補完
+bindkey "^P" history-beginning-search-backward-end
+bindkey "^N" history-beginning-search-forward-end
+
+#履歴のインクリメンタル検索でワイルドカード利用可能
+bindkey '^R' history-incremental-pattern-search-backward
+bindkey '^S' history-incremental-pattern-search-forward

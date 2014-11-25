@@ -1,0 +1,34 @@
+# ls
+alias ls='ls -F --color'
+alias la='ls -a'
+alias less='less -s -i'
+alias ll='ls -l'
+alias lla='ll -a'
+
+# grep
+alias grep='grep --color=auto'
+alias lg='ls -a | grep'
+
+# git
+alias gco='git checkout'
+alias gcob='git checkout -b'
+alias gb='git branch'
+
+# cd ..
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+
+# tmux
+alias aliastx='alias | grep tmux'
+# alias tmux='tmux -2'
+alias tmls='\tmux list-sessions'
+alias tmlc='\tmux list-clients'
+alias killtmux='\tmux kill-server'
+alias tmkl='\tmux kill-session'
+alias tmaw='\tmux main-horizontal'
+alias tmuxa='\tmux -2 a -t'
+# tmux起動中にtmuxコマンドが使用できるように
+if [ "$SHLVL" -eq 1 ]; then
+  alias tmux='tmux -2 new-session'
+fi
