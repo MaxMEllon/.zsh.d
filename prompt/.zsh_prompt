@@ -10,5 +10,5 @@ setopt prompt_subst
 
 # PROMPT2='%B%{$cn%}[$role]->%b'
 
-SPROMPT="%{$be%}もしかして%B%{$yw%} %r %b%{$be%}ですか?? %{$gn%}[ %B%{$cn%}はい： y %{$gn%}, %{$rd%}いいえ : n %b%{$gn%}] :%{$rc%}"
+SPROMPT="%{$be%}もしかして%B%{$yw%} %r %b%{$be%}ですか?? %{$gn%}[ %B%{$cn%}はい： y %{$gn%}, %{$rd%}いいえ : n, %b%{$be%} 中止 ： a,%{$yw%} 戻る ： e%b%{$gn%}] :%{$rc%}"
 # RPROMPT='%B%{$yw%} %D %T%{$rc%}%b '
