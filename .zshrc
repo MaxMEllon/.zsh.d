@@ -5,11 +5,15 @@
 source ~/.dotfiles/.zsh.d/config/.zsh_config
 
 #======================================================================
-# package
+# package, plugin
 #======================================================================
 
 source ~/.dotfiles/.zsh.d/package/zsh.d/zshrc
-source ~/.dotfiles/.zsh.d/package/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# zsh-syntax
+cd ~/.dotfiles/.zsh.d/package/zsh-syntax-highlighting
+source zsh-syntax-highlighting.zsh
+cd
 
 #======================================================================
 # ls_colors
@@ -52,4 +56,3 @@ source ~/.dotfiles/.zsh.d/const/.zsh_const
 #======================================================================
 
 source ~/.dotfiles/.zsh.d/prompt/.zsh_prompt
-

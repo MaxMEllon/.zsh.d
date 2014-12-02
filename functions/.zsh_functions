@@ -15,27 +15,27 @@ _set_tmux_window() {
 # prompt-git-current-branch
 function current_branch {
   if [[ "$PWD" = ${DOTFILES}'/\.git(/.*)?$' ]]; then
-    echo "%{%B${fg[black]}%}NON%{${reset_color}%}%b"
+    echo "%{%B${fg[black]}%}no git%{${reset_color}%}%b"
     return
   fi
   name=$(basename "`git symbolic-ref HEAD 2> /dev/null`")
   if [[ -z $name ]]; then
-    echo "%{%B${fg[black]}%}no_branch%{${reset_color}%}%b"
+    echo "%{%B${fg[black]}%} branch %{${reset_color}%}%b"
     return
   fi
   st=`git status 2> /dev/null`
   if [[ -n `echo "$st" | grep "^nothing to"` ]]; then
-    color=${fg[green]}
+    color=${bg[blue]}${fg[green]}
   elif [[ -n `echo "$st" | grep "^nothing added"` ]]; then
-    color=${fg[blue]}
+    color=${bg[red]}${fg[blue]}
   elif [[ -n `echo "$st" | grep "^# Untracked"` ]]; then
-    color=${fg_bold[red]}
+    color=${bg[red]}${fg_bold[white]}
   else
-    color=${fg[red]}
+    color=${bg[red]}${fg_bold[white]}
   fi
   # %{...%} は囲まれた文字列がエスケープシーケンスであることを明示する
   # これをしないと右プロンプトの位置がずれる
-  echo "%{$color%}%{%B%}$name%{%b%}%{$reset_color%}"
+  echo "%{$color%}%{%B%} $name %{%b%}%{$reset_color%}"
 }
 
 #======================================================================
