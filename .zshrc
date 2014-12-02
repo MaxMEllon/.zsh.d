@@ -5,17 +5,21 @@
 source ~/.dotfiles/.zsh.d/config/.zsh_config
 
 #======================================================================
-# package, plugin
+# package
 #======================================================================
 
 source ~/.dotfiles/.zsh.d/package/zsh.d/zshrc
 
+#======================================================================
+# plugin
+#======================================================================
+
 # incr
-source ~/.dotfiles/.zsh.d/package/incr-0.2.zsh/incr-0.2.zsh
+source ~/.dotfiles/.zsh.d/plugin/incr-0.2.zsh/incr-0.2.zsh
 
 # zsh-syntax
 # なんかこうしないとうまくいかない
-cd ~/.dotfiles/.zsh.d/package/zsh-syntax-highlighting
+cd ~/.dotfiles/.zsh.d/plugin/zsh-syntax-highlighting
 source zsh-syntax-highlighting.zsh
 cd -
 
