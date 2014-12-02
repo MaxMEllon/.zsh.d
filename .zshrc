@@ -10,10 +10,14 @@ source ~/.dotfiles/.zsh.d/config/.zsh_config
 
 source ~/.dotfiles/.zsh.d/package/zsh.d/zshrc
 
+# incr
+source ~/.dotfiles/.zsh.d/package/incr-0.2.zsh/incr-0.2.zsh
+
 # zsh-syntax
+# なんかこうしないとうまくいかない
 cd ~/.dotfiles/.zsh.d/package/zsh-syntax-highlighting
 source zsh-syntax-highlighting.zsh
-cd
+cd -
 
 #======================================================================
 # ls_colors
