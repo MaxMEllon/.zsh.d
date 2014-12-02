@@ -9,6 +9,7 @@ source ~/.dotfiles/.zsh.d/config/.zsh_config
 #======================================================================
 
 source ~/.dotfiles/.zsh.d/package/zsh.d/zshrc
+source ~/.dotfiles/.zsh.d/package/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 #======================================================================
 # ls_colors
