@@ -15,7 +15,11 @@ source ~/.dotfiles/.zsh.d/package/zsh.d/zshrc
 #======================================================================
 
 # incr
-source ~/.dotfiles/.zsh.d/plugin/incr-0.2.zsh/incr-0.2.zsh
+# 強力すぎて邪魔だったので一時無効
+# source ~/.dotfiles/.zsh.d/plugin/incr-0.2.zsh/incr-0.2.zsh
+
+# z
+source ~/.dotfiles/.zsh.d/plugin/z/z.sh
 
 # zsh-syntax
 # なんかこうしないとうまくいかない
