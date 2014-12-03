@@ -32,3 +32,6 @@ alias tmuxa='\tmux -2 a -t'
 if [ "$SHLVL" -eq 1 ]; then
   alias tmux='tmux -2 new-session'
 fi
+
+# z
+alias j='z'
