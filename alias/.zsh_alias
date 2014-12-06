@@ -33,5 +33,8 @@ if [ "$SHLVL" -eq 1 ]; then
   alias tmux='tmux -2 new-session'
 fi
 
+# platuml
+alias uml="java -jar ${HOME}/lib/java/plantuml.jar -tpng"
+
 # z
 alias j='z'
