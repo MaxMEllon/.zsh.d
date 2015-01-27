@@ -1,5 +1,9 @@
 #!/bin/sh
 
+mkdir ip
+curl "ifconfig.me/ip" > ~/.dotfiles/.zsh.d/ip/ip_data.dat
+curl "ifconfig.me/host" >> ~/.dotfiles/.zsh.d/ip/ip_data.dat
+
 cd
 github_user_name=MaxMEllon
 local_path=(.dotfiles/.zsh.d .dotfiles/.zsh.d/package/zsh.d)
@@ -14,3 +18,4 @@ if [ ! -e .zshenv ]; then
   touch .zshenv
 fi
 echo "source ~/.dotfiles/.zsh.d/package/zsh.d/zshenv" >> ~/.zshenv
+
