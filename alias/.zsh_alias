@@ -34,7 +34,7 @@ if [ "$SHLVL" -eq 1 ]; then
 fi
 
 # platuml
-alias uml="java -jar ${HOME}/lib/java/plantuml.jar -tpng"
+alias uml="java -jar ${HOME}/local/bin/plantuml.jar -tpng"
 
 # z
 alias j='z'

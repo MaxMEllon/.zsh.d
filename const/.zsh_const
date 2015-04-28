@@ -39,3 +39,5 @@ role='%(!.#.$)'
 # Ctrl-W での単語単位を区切るワードの登録
 WORDCHARS='*?_-.[~=&;!#$%^({<>})]'
 
+fpath=(~/.dotfiles/.zsh.d/plugin/zsh-completions/src $fpath)
+
