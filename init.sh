@@ -1,9 +1,9 @@
 #!/bin/sh
-
-mkdir ip
-curl "ifconfig.me/ip" > ~/.dotfiles/.zsh.d/ip/ip_data.dat
-curl "ifconfig.me/host" >> ~/.dotfiles/.zsh.d/ip/ip_data.dat
-
+ZSHRC_PATH=~/.dotfiles/.zsh.d
+mkdir $ZSHRC_PATH
+curl "ifconfig.me/ip" > $ZSHRC_PATH/ip/ip_data.dat
+curl "ifconfig.me/host" >> $ZSHRC_PATH/ip/ip_data.dat
+cd $ZSHRC_PATH
 git submodule update --init
 cd
 ln -s .dotfiles/.zsh.d/.zshrc
