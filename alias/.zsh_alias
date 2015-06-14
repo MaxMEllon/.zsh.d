@@ -40,4 +40,4 @@ alias uml="java -jar ${HOME}/local/bin/plantuml.jar -tpng"
 alias j='z'
 
 # gisty
-alias gisty='gisty post'
+# alias gisty='gisty post'
