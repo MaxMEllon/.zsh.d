@@ -25,6 +25,7 @@ source ~/.dotfiles/.zsh.d/plugin/z/z.sh
 # なんかこうしないとうまくいかない
 cd ~/.dotfiles/.zsh.d/plugin/zsh-syntax-highlighting
 source zsh-syntax-highlighting.zsh
+cd -
 
 #======================================================================
 # ls_colors

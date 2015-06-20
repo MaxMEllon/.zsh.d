@@ -80,3 +80,75 @@ ls_abbrev() {
 # 時刻更新
 function TRAPALRM () { zle reset-prompt }
 TMOUT=60
+
+
+#######################################################################
+# peco!
+#######################################################################
+# See: https://github.com/iguto/dotfiles/blob/master/zsh.d/my_widgets.zsh#L69-L78
+function peco-git-recent-branches () {
+  which git peco > /dev/null
+  if [ $? -ne 0]; then
+    echo "Plese install peco and git"
+    return 1
+  fi
+  local selected_branch=$( git for-each-ref --format='%(refname)' --sort=-committerdate  refs/heads | ruby -pne '$_.gsub!(/refs\/(heads|remotes)\//, "")' | peco )
+  if [ -n "$selected_branch" ]; then
+    BUFFER="git checkout $selected_branch"
+    zle accept-line
+  fi
+}
+
+zle -N peco-git-recent-branches
+bindkey '^b' peco-git-recent-branches
+
+# See: https://github.com/iguto/dotfiles/blob/master/zsh.d/my_widgets.zsh#L81-L98
+function peco-tmux-session() {
+  which tmux peco > /dev/null
+  if [ $? -ne 0 ]; then
+    echo "Please install peco and tmux"
+    return 1
+  fi
+  sessions=$(tmux ls | ruby -ane 'name,*other=$_.split(" "); puts ("%-20s" % name) + other.join(" ")')
+  echo $sessions
+  local selected=$(echo $sessions | peco | cut -d: -f 1)
+  if [ -z $selected ]; then
+    zle clear-screen
+    return 0
+  fi
+  BUFFER="tmux attach -t $selected"
+  zle accept-line
+}
+zle -N peco-tmux-session
+bindkey '^t' peco-tmux-session
+
+# See: http://qiita.com/xtetsuji/items/05f6f4c1b17854cdd75b
+function peco-lscd {
+  which peco > /dev/null
+  if [ $? -ne 0 ]; then
+    echo "Please install peco"
+    return 1
+  fi
+  local dir="$( find . -maxdepth 1 -type d | sed -e 's;\./;;' | peco )"
+  if [ ! -z "$dir" ] ; then
+    cd "$dir"
+  fi
+}
+zle -N peco-lscd
+alias lscd='peco-lscd'
+
+# See:https://github.com/ryoppy/cool-peco/blob/master/functions/cool-peco-filename-search
+function peco-file-name-search
+{
+  which peco > /dev/null
+  if [ $? -ne 0 ]; then
+    echo "Please install peco"
+    return 1
+  fi
+  local res
+  BUFFER+=$(find . -name "*${1}*" | grep -v "/\." | peco)
+}
+zle -N peco-file-name-search
+bindkey '^f' peco-file-name-search
+
+
