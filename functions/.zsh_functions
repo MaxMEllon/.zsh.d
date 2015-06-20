@@ -120,7 +120,7 @@ function peco-tmux-session() {
   zle accept-line
 }
 zle -N peco-tmux-session
-bindkey '^t' peco-tmux-session
+bindkey '^g' peco-tmux-session
 
 # See: http://qiita.com/xtetsuji/items/05f6f4c1b17854cdd75b
 function peco-lscd {
