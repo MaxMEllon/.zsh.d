@@ -102,7 +102,6 @@ function peco-git-recent-branches () {
 zle -N peco-git-recent-branches
 bindkey '^b' peco-git-recent-branches
 
-# See: https://github.com/iguto/dotfiles/blob/master/zsh.d/my_widgets.zsh#L81-L98
 function peco-tmux-session() {
   which tmux peco > /dev/null
   if [ $? -ne 0 ]; then
@@ -110,9 +109,13 @@ function peco-tmux-session() {
     return 1
   fi
   local res
-  res=$(tmux list-sessions | peco | awk -F':' '{print $1}')
+  res=$(\tmux list-sessions | peco | awk -F':' '{print $1}')
   if [ -n "$res" ]; then
-    BUFFER="tmux switch-client -t $res"
+    if [ -n "$TMUX" ]; then
+      BUFFER="tmux switch-client -t $res"
+    else
+      BUFFER="tmux attach -t $res"
+    fi
     zle accept-line
   fi
 }

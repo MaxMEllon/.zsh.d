@@ -21,7 +21,6 @@ alias ....='cd ../../..'
 
 # tmux
 alias aliastx='alias | grep tmux'
-# alias tmux='tmux -2'
 alias tmls='\tmux list-sessions'
 alias tmlc='\tmux list-clients'
 alias killtmux='\tmux kill-server'
@@ -30,7 +29,7 @@ alias tmaw='\tmux main-horizontal'
 alias tmuxa='\tmux -2 a -t'
 # tmux起動中にtmuxコマンドが使用できるように
 if [ "$SHLVL" -eq 1 ]; then
-  alias tmux='tmux -2 new-session'
+  alias tmx='tmux -2 new-session'
 fi
 
 # platuml
