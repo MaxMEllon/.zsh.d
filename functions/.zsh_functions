@@ -99,7 +99,7 @@ function git_status {
   fi
 }
 zle -N git_status
-bindkey '^g^s' git_status
+bindkey '^j^s' git_status
 
 #==================================================
 # paco
@@ -124,7 +124,7 @@ function peco-git-recent-branches
 }
 
 zle -N peco-git-recent-branches
-bindkey '^g^b' peco-git-recent-branches
+bindkey '^j^b' peco-git-recent-branches
 
 function peco-tmux-session
 {
