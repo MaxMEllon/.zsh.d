@@ -109,18 +109,15 @@ function peco-tmux-session() {
     echo "Please install peco and tmux"
     return 1
   fi
-  sessions=$(tmux ls | ruby -ane 'name,*other=$_.split(" "); puts ("%-20s" % name) + other.join(" ")')
-  echo $sessions
-  local selected=$(echo $sessions | peco | cut -d: -f 1)
-  if [ -z $selected ]; then
-    zle clear-screen
-    return 0
+  local res
+  res=$(tmux list-sessions | peco | awk -F':' '{print $1}')
+  if [ -n "$res" ]; then
+    BUFFER="tmux switch-client -t $res"
+    zle accept-line
   fi
-  BUFFER="tmux attach -t $selected"
-  zle accept-line
 }
 zle -N peco-tmux-session
-bindkey '^g' peco-tmux-session
+bindkey '^s' peco-tmux-session
 
 # See: http://qiita.com/xtetsuji/items/05f6f4c1b17854cdd75b
 function peco-lscd {
