@@ -81,28 +81,53 @@ ls_abbrev() {
 function TRAPALRM () { zle reset-prompt }
 TMOUT=60
 
+#==================================================
+# git
+#==================================================
 
-#######################################################################
-# peco!
-#######################################################################
-# See: https://github.com/iguto/dotfiles/blob/master/zsh.d/my_widgets.zsh#L69-L78
-function peco-git-recent-branches () {
-  which git peco > /dev/null
-  if [ $? -ne 0]; then
+function git_status {
+  which git > /dev/null
+  if [ $? -ne 0 ]; then
     echo "Plese install peco and git"
     return 1
   fi
-  local selected_branch=$( git for-each-ref --format='%(refname)' --sort=-committerdate  refs/heads | ruby -pne '$_.gsub!(/refs\/(heads|remotes)\//, "")' | peco )
-  if [ -n "$selected_branch" ]; then
-    BUFFER="git checkout $selected_branch"
+  if [ "$(git rev-parse --is-inside-work-tree 2> /dev/null)" = 'true' ]; then
+    BUFFER='git status -s'
     zle accept-line
+  else
+    return 1
+  fi
+}
+zle -N git_status
+bindkey '^g^s' git_status
+
+#==================================================
+# paco
+#==================================================
+# See: https://github.com/iguto/dotfiles/blob/master/zsh.d/my_widgets.zsh#L69-L78
+function peco-git-recent-branches
+{
+  which git peco > /dev/null
+  if [ $? -ne 0 ]; then
+    echo "Plese install peco and git"
+    return 1
+  fi
+  if [ "$(git rev-parse --is-inside-work-tree 2> /dev/null)" = 'true' ]; then
+    local selected_branch=$( git for-each-ref --format='%(refname)' --sort=-committerdate  refs/heads | ruby -pne '$_.gsub!(/refs\/(heads|remotes)\//, "")' | peco )
+    if [ -n "$selected_branch" ]; then
+      BUFFER="git checkout $selected_branch"
+      zle accept-line
+    fi
+  else
+    return 1
   fi
 }
 
 zle -N peco-git-recent-branches
-bindkey '^b' peco-git-recent-branches
+bindkey '^g^b' peco-git-recent-branches
 
-function peco-tmux-session() {
+function peco-tmux-session
+{
   which tmux peco > /dev/null
   if [ $? -ne 0 ]; then
     echo "Please install peco and tmux"
