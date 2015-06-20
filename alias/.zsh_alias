@@ -41,3 +41,9 @@ alias j='z'
 
 # gisty
 # alias gisty='gisty post'
+
+# rails
+alias be='bundle exec'
+alias railss='rails s -b 0.0.0.0'
+
+alias :q='exit'

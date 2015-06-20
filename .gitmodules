@@ -7,9 +7,6 @@
 [submodule "plugin/zsh-completions"]
 	path = plugin/zsh-completions
 	url = https://github.com/zsh-users/zsh-completions.git
-[submodule "zsh-syntax-highlighting"]
-	path = zsh-syntax-highlighting
-	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
 [submodule "plugin/zsh-syntax-highlighting"]
 	path = plugin/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
