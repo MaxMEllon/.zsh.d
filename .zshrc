@@ -18,6 +18,18 @@ source ~/.dotfiles/.zsh.d/package/zsh.d/zshrc
 # 強力すぎて邪魔だったので一時無効
 # source ~/.dotfiles/.zsh.d/plugin/incr-0.2.zsh/incr-0.2.zsh
 
+# cd-gitroot
+fpath=(~/.dotfiles/.zsh.d/plugin/cd-gitroot(N-/) $fpath)
+autoload -Uz cd-gitroot
+alias cdu='cd-gitroot'
+
+# k
+GIT_VER=`git --version | awk -F . '{ print $2 }'`
+if [ $GIT_VER -ge 9 ]; then
+  source ~/.dotfiles/.zsh.d/plugin/k/k.sh
+  K="ENABLE"
+fi
+
 # z
 source ~/.dotfiles/.zsh.d/plugin/z/z.sh
 
@@ -68,3 +80,4 @@ source ~/.dotfiles/.zsh.d/const/.zsh_const
 #======================================================================
 
 source ~/.dotfiles/.zsh.d/prompt/.zsh_prompt
+

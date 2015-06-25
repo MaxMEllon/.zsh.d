@@ -10,3 +10,9 @@
 [submodule "plugin/zsh-syntax-highlighting"]
 	path = plugin/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+[submodule "plugin/k"]
+	path = plugin/k
+	url = https://github.com/rimraf/k.git
+[submodule "plugin/cd-gitroot"]
+	path = plugin/cd-gitroot
+	url = https://github.com/mollifier/cd-gitroot.git

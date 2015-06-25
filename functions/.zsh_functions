@@ -176,4 +176,3 @@ function peco-file-name-search
 zle -N peco-file-name-search
 bindkey '^f' peco-file-name-search
 
-
