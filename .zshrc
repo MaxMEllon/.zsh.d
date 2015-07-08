@@ -1,16 +1,4 @@
 #======================================================================
-# config
-#======================================================================
-
-source ~/.dotfiles/.zsh.d/config/.zsh_config
-
-#======================================================================
-# package
-#======================================================================
-
-source ~/.dotfiles/.zsh.d/package/zsh.d/zshrc
-
-#======================================================================
 # plugin
 #======================================================================
 
@@ -24,8 +12,8 @@ autoload -Uz cd-gitroot
 alias cdu='cd-gitroot'
 
 # k
-GIT_VER=`git --version | awk -F . '{ print $2 }'`
-if [ $GIT_VER -ge 9 ]; then
+GIT_VER=`git --version | awk -F ' ' '{ print $3 }' | cut -c1`
+if [ $GIT_VER -ge 2 ]; then
   source ~/.dotfiles/.zsh.d/plugin/k/k.sh
   K="ENABLE"
 fi
@@ -38,6 +26,18 @@ source ~/.dotfiles/.zsh.d/plugin/z/z.sh
 cd ~/.dotfiles/.zsh.d/plugin/zsh-syntax-highlighting
 source zsh-syntax-highlighting.zsh
 cd -
+
+#======================================================================
+# config
+#======================================================================
+
+source ~/.dotfiles/.zsh.d/config/.zsh_config
+
+#======================================================================
+# package
+#======================================================================
+
+source ~/.dotfiles/.zsh.d/package/zsh.d/zshrc
 
 #======================================================================
 # ls_colors
