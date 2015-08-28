@@ -41,7 +41,7 @@ function current_branch {
 #======================================================================
 # https://gist.github.com/yonchu/3935922
 #======================================================================
-#cd後自動でls
+# cd後自動でls
 function chpwd() { ls_abbrev }
 
 ls_abbrev() {
@@ -57,7 +57,7 @@ ls_abbrev() {
       cmd_ls='gls'
     else
       # -G : Enable colorized output.
-      opt_ls=('-aCFG')
+      opt_ls=('-CFG')
     fi
     ;;
   esac
@@ -170,8 +170,13 @@ function peco-file-name-search
     echo "Please install peco"
     return 1
   fi
-  local res
-  BUFFER+=$(find . -name "*${1}*" | grep -v "/\." | peco)
+  local res=$(z | sort -rn | cut -c 12- | peco)
+  if [ -n "$res" ]; then
+    BUFFER+="cd $res"
+    zle accept-line
+  else
+    return 1
+  fi
 }
 zle -N peco-file-name-search
 bindkey '^f' peco-file-name-search
