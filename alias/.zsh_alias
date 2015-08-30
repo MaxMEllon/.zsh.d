@@ -1,5 +1,4 @@
 # ls
-alias ls='ls -F --color'
 alias la='ls -a'
 alias less='less -s -i'
 alias ll='ls -l'
@@ -46,3 +45,8 @@ alias be='bundle exec'
 alias railss='rails s -b 0.0.0.0'
 
 alias :q='exit'
+
+# ag
+alias ag="ag --pager=\"less -R\""
+
+alias gyazo="gyazo-cli"
